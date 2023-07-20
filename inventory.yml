@@ -1,0 +1,19 @@
+---
+all:
+  vars:
+    ansible_user: "{{ lookup('env','USER') }}"
+
+  children:
+    testing:
+      hosts:
+        localhost:
+          ansible_connection: local
+          ansible_python_interpreter: "{{ansible_playbook_python}}"
+        lapbot:
+          ansible_connection: ssh
+    opensearch:
+      hosts:
+        osearch01:
+          ansible_user: special_user_as_example
+          ansible_host: 192.168.41.111
+  

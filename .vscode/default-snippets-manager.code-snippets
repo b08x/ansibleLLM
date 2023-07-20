@@ -1,0 +1,25 @@
+{
+	"debug": {
+		"prefix": "debug",
+		"description": "debug",
+		"scope": "yaml",
+		"body": [
+			"- name: testing",
+			"  debug:",
+			"    msg: \"{{ \\$1 }}\""
+		]
+	},
+	"copy_content": {
+		"prefix": "copy_content",
+		"description": "copy_content",
+		"scope": "yaml",
+		"body": [
+			"    - name: ",
+			"      copy:",
+			"        content: |",
+			"",
+			"      dest:",
+			"      mode: '0644'"
+		]
+	}
+}

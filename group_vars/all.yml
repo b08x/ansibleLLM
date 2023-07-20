@@ -1,0 +1,10 @@
+---
+
+user:
+  name: "{{ lookup('env','USER') }}"
+  group: "{{ lookup('env','USER') }}"
+  uid: "{{ lookup('env','UID') }}"
+  gid: "{{ lookup('env','GID') }}"
+  home: "{{ lookup('env','HOME') }}"
+  secondary_groups: "wheel,input,video,audio"
+  shell: /usr/bin/zsh
