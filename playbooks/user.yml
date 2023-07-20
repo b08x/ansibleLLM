@@ -1,0 +1,7 @@
+---
+
+- name: setup user
+  hosts: testing
+  roles:
+    - role: user
+      tags: ['user']

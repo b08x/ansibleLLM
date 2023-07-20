@@ -1,0 +1,14 @@
+---
+
+- name: base playbook
+  hosts: all
+  vars:
+    path:
+      - "{{ lookup('env','HOME') }}/.local/bin"
+
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/sbin:/bin:{{ path|join(':') }}"
+
+- import_playbook: user.yml
+- import_playbook: env.yml
+

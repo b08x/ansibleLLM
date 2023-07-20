@@ -1,0 +1,30 @@
+---
+
+- name: classify audio
+  hosts: testing:audio
+  pre_tasks:
+    - name: set model
+
+    - name: create database
+  tasks:
+    - name: classify folder containing wav files
+      register: reponse
+
+    - name: parse reponses and store results in db
+
+
+# import json
+# import requests
+
+# headers = {"Authorization": "Bearer <token>"}
+# #API_URL = "https://api-inference.huggingface.co/models/superb/hubert-large-superb-er"
+# API_URL = "https://api-inference.huggingface.co/models/MIT/ast-finetuned-audioset-10-10-0.4593"
+
+# def query(filename):
+#     with open(filename, "rb") as f:
+#         data = f.read()
+#     response = requests.request("POST", API_URL, headers=headers, data=data)
+#     return json.loads(response.content.decode("utf-8"))
+# data = query("011_nakenne_paint-whirl.flac")
+
+# print(data)
