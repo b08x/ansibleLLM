@@ -1,0 +1,17 @@
+galaxy_info:
+  author: b08x
+  role_name: openai_chat
+  description: Ansible module for openai API
+  license: GPL-3.0-or-later
+  min_ansible_version: 2.0
+
+  # https://galaxy.ansible.com/api/v1/platforms/
+  platforms:
+  - name: ArchLinux
+    versions:
+    - any
+
+  galaxy_tags:
+  - openai_chat
+
+dependencies: []
