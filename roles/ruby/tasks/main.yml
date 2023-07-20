@@ -1,0 +1,24 @@
+---
+
+- name: testing
+  debug:
+    msg: "testing ruby role"
+
+- name: OpenAI Module Test
+  openai_chat:
+    api_key: "{{ lookup('env','OPENAI_API_KEY') }}"
+    model: "gpt-3.5-turbo-16k"
+    messages:
+      - role: "system"
+        content: "You are a helpful assistant."
+      - role: "user"
+        content: "Who won the world series in 2020?"
+    temperature: 1.5
+    max_tokens: 60
+    frequency_penalty: 2.0
+    presence_penalty: -2.0
+  register: chat_result
+
+- name: Display chat_result
+  debug:
+    msg: "{{ chat_result }}"

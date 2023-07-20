@@ -1,0 +1,63 @@
+---
+
+- name: testing
+  debug:
+    msg: "testing python role"
+
+- name: Set virtualenv path
+  set_fact:
+    virtualenv:
+      path: "{{ py.virtualenv.path }}"
+
+- name: Display virtualenv.path
+  debug:
+    msg: "{{ virtualenv.path }}"
+
+- name: Remove virtualenv
+  command: "rm -rf {{ virtualenv.path }}"
+  when: py.virtualenv.state == 'absent'
+
+- block:
+
+    - name: Install Python virtualenv
+      block:
+
+        - name: Install virtualenv from AUR
+          aur:
+            use: auto
+            name: python-virtualenv
+            state: present
+          when: ansible_os_family == 'Archlinux'
+
+        # Defaulting to user installation 
+        # because normal site-packages is not writeable
+        - name: Install virtualenv with pip
+          pip:
+            name: virtualenv
+            state: present
+          when: ansible_os_family != 'Archlinux'
+
+
+    - name: Create venv 
+      command: "virtualenv --system-site-packages {{ virtualenv.path }}"
+
+    - name: Activate virtualenv
+      shell: |
+        source {{ virtualenv.path }}/bin/activate
+
+    - name: Install Python Modules
+      pip:
+        name: "{{ py.modules }}"
+        state: present
+        virtualenv: "{{ virtualenv.path }}"
+        virtualenv_site_packages: True
+
+  when: py.virtualenv.state == 'present'
+
+- name: Add virtualenv to user $PATH
+  copy:
+    content: |
+      [[ -s "{{ virtualenv.path }}/bin/activate" ]] && source "{{ virtualenv.path }}/bin/activate"
+    dest: "/etc/profile.d/virtualenv.sh"
+  become: True
+
