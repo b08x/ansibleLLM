@@ -1,21 +1,12 @@
 # Ansible Collection LLM
 
-An Ansible Collection to
+An Ansible Collection to manage reproducible environments for LLM testing applications
 
-  * manage reproducible environments for LLM testing applications
-
-
-app deployment
+This project is currently in the planning stage.
 
 
-Data preprocessing / embedding
 
-`data --> pre-processing --> embedding model --> vector database`
 
-* tasks to create vector host and db
-* tasks for pre-processing
-* tasks to aquire embeddings
-* tasks to store embeddings in vector db
 
 Prompt construction / testing / storage
 
@@ -24,7 +15,7 @@ Prompt construction / testing / storage
 ## setup || config
 
 ```bash
-# clone the repository and set Ansible ENV vars 
+# clone the repository and set Ansible ENV vars
 git clone --recursive https://github.com:b08x/ansibleLLM.git
 
 cd ansibleLLM
@@ -89,7 +80,7 @@ Main playbook, includes all other playbooks.
 
 `env.yml`
 
-Configures programming language environments. 
+Configures programming language environments.
 
   * virtualenv for python
   * rvm for ruby
@@ -100,7 +91,7 @@ Configures users
 
 `audio.yml`
 
-Perform audio analysis 
+Perform audio analysis
 
 ## modules
 
@@ -109,6 +100,17 @@ openai
 langchain
 
 ## roles
+
+
+
+## Data preprocessing / embedding
+
+`data --> pre-processing --> embedding model --> vector database`
+
+* tasks to create vector host and db
+* tasks for pre-processing
+* tasks to aquire embeddings
+* tasks to store embeddings in vector db
 
 ### nlp
 
