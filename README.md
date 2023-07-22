@@ -1,10 +1,8 @@
 # Ansible Collection LLM
 
-An Ansible Collection to manage reproducible environments for LLM testing applications
+An Ansible Collection to manage LLM environment configurations
 
 This project is currently in the planning stage.
-
-
 
 
 
@@ -101,7 +99,9 @@ langchain
 
 ## roles
 
+## prompt mgmt
 
+https://python.langchain.com/docs/modules/model_io/prompts/prompt_templates/formats
 
 ## Data preprocessing / embedding
 
